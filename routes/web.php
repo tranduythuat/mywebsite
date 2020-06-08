@@ -46,3 +46,7 @@ Route::prefix('categories')->group(function(){
         'uses' => 'CategoryController@delete'
     ]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

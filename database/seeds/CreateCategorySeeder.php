@@ -14,47 +14,38 @@ class CreateCategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             'id' => 1,
-            'name' => 'Category 1', 
+            'name' => 'Quần áo', 
             'parent_id' => 0, 
         ]);
         DB::table('categories')->insert([
             'id' => 2,
-            'name' => 'Category 2', 
+            'name' => 'Giày dép', 
             'parent_id' => 0, 
         ]);
         DB::table('categories')->insert([
             'id' => 3,
-            'name' => 'Category 3', 
+            'name' => 'Phụ kiện', 
             'parent_id' => 0, 
         ]);
         DB::table('categories')->insert([
             'id' => 4,
-            'name' => 'Category 1.1', 
+            'name' => 'Quần áo nam', 
             'parent_id' => 1, 
         ]);
         DB::table('categories')->insert([
             'id' => 5,
-            'name' => 'Category 1.2', 
+            'name' => 'Quần áo nữ', 
             'parent_id' => 1, 
         ]);
+
         DB::table('categories')->insert([
             'id' => 6,
-            'name' => 'Category 1.3', 
-            'parent_id' => 1, 
-        ]);
-        DB::table('categories')->insert([
-            'id' => 7,
-            'name' => 'Category 1.1.1', 
-            'parent_id' => 4, 
-        ]);
-        DB::table('categories')->insert([
-            'id' => 8,
-            'name' => 'Category 2.1', 
+            'name' => 'Giày dép nam', 
             'parent_id' => 2, 
         ]);
         DB::table('categories')->insert([
-            'id' => 9,
-            'name' => 'Category 3.1', 
+            'id' => 7,
+            'name' => 'Phụ kiện nam', 
             'parent_id' => 3, 
         ]);
     }
