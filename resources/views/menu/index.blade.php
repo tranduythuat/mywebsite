@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  <title>Danh sách danh mục</title>
+  <title>Danh sách menu</title>
 @endsection
 
 @push('style')
@@ -11,7 +11,7 @@
 @section('content')
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  @include('partials.content-header', ['name' => 'Category', 'key' => 'List'])
+  @include('partials.content-header', ['name' => 'Menu', 'key' => 'List'])
   <!-- /.content-header -->
 
   <!-- Main content -->
@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <a href="{{ route('categories.create') }}" class="btn btn-primary float-right m-2">Thêm mới</a>
+          {{-- <a href="{{ route('categories.create') }}" class="btn btn-primary float-right m-2">Thêm mới</a> --}}
         </div>
         <div class="col-md-12">
           <table class="table" id="tbCategories">
@@ -39,7 +39,7 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($categories as $category)
+              {{-- @foreach ($categories as $category)
                 <tr>
                   <th scope="row">{{ $category->id }}</th>
                   <td>{{ $category->name  }}</td>
@@ -48,12 +48,12 @@
                       <a href="javascript:;" class="btn btn-danger" onclick="category.delete({{ $category->id }})">Delete</a>
                   </td>
                 </tr>
-              @endforeach
+              @endforeach --}}
             </tbody>
           </table>
         </div>
         <div class="col-md-12">
-          {{ $categories->links() }}
+          {{-- {{ $categories->links() }} --}}
         </div>
       </div>
     </div>

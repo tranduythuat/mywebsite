@@ -18,7 +18,7 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->category::all();
+        $categories = $this->category->latest()->paginate(5);
         return view('category.index', compact('categories'));
     }
 
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     {
         $this->category->find($id)->delete();
 
-        return response()->json(['success'=>'Product deleted successfully.']);
+        return redirect()->route('categories.index')->with('success', 'Xóa danh mục thành công!');
     }
 }
  
