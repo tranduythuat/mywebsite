@@ -45,7 +45,7 @@
           </table>
         </div>
         <div class="col-md-12">
-          {{ $categories->links() }}
+          {{-- {{ $categories->links() }} --}}
         </div>
       </div>
     </div>
