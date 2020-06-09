@@ -34,7 +34,8 @@ class CategoryController extends Controller
         $this->category->create([
             'name' => $request->name,
             'parent_id' => $request->parent_id,
-            'slug' => Str::of($request->name)->slug('-')
+            // 'slug' => Str::of($request->name)->slug('-')
+            'slug' => Str::slug($request->name, '-')
         ]);
 
         return redirect()->route('categories.index')->with('success', 'Tạo mới danh mục thành công!');

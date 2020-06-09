@@ -65,20 +65,20 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      {{-- <div class="modal-body">
         ...
-      </div>
+      </div> --}}
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không </button>
         <form action="" method="POST" id="formDele">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-primary">Save changes</button>
+          <button type="submit" class="btn btn-primary">Có</button>
         </form>
       </div>
     </div>
@@ -95,6 +95,7 @@
   
   category.delete = function(id) {  
     $("#formDele").attr(`action`, `/categories/delete/${id}`);
+    $("#exampleModal").find("h5").text("Bạn có chắc muốn xóa?")
     $("#exampleModal").modal('show');
   }
 </script>
