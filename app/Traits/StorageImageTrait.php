@@ -10,14 +10,14 @@ trait StorageImageTrait{
         if($request->hasFile($fieldName)){
             $file = $request->$fieldName;
             // $fileNameOrigin = $file->getClientOriginalName();
-            $fileNameOrigin = $file->getClientOriginalName();
             $fileNameHash = Str::random(40) . '.' . $file->getClientOriginalExtension();
-            $filePath = $request->file($fieldName)->storeAs('public/'. $folderName .'/' . auth()->id(), $fileNameHash);
-
+            // $filePath = $request->file($fieldName)->storeAs('public/'. $folderName .'/' . auth()->id() . $fileNameHash);
+            $file->move(public_path('storage/'.$folderName .'/' . auth()->id()), $fileNameHash);
             $dataUploadTrait = [
                 // 'file_name' => $fileNameOrigin, 
-                'file_path' => Storage::url($filePath),
-                'file_name' => $fileNameHash
+                // 'file_path' => Storage::url($filePath),
+                'file_name' => $fileNameHash, 
+                'file_path' => $fileNameHash,
             ];
 
             return $dataUploadTrait;
