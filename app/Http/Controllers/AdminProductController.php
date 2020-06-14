@@ -60,7 +60,7 @@ class AdminProductController extends Controller
 
     public function store(ProductAddRequest $request)
     {
-        // dd($request->tags);
+        // dd($request->tags);  
         try {
 
             DB::beginTransaction();
