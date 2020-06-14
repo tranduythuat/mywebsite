@@ -40,7 +40,7 @@
                     >
                     <div class="col-md-4">
                       <div class="row">
-                        <img class="image-slider-edit" src="{{ $slider->image_path }}" alt="">
+                        <img class="image-slider-edit" src="{{ URL::to('/') }}/storage/slider/{{ auth()->id() }}/{{ $slider->image_path }}" alt="">
                       </div>
                     </div>
                     @error('slider_image_path')

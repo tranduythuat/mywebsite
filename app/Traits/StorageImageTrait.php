@@ -41,7 +41,7 @@ trait StorageImageTrait{
             'file_name' => $fileNameHash, 
             'file_path' => $fileNameHash
         ];
-
+        
         return $dataUploadTrait;
     }
 }

@@ -90,14 +90,14 @@ class AdminProductController extends Controller
             if($request->hasFile('image_path')){
                 foreach($request->image_path as $fileItem){
                     $dataProductImageDetail = $this->storageTraitUpLoadMutiple($fileItem, 'products');
-                    // dd($dataProductImageDetail);
+                    
                     $dataProduct->images()->create([
                         'image_path' => $dataProductImageDetail['file_path'],
                         'image_name' => $dataProductImageDetail['file_name'],
                     ]);
                 }
-
-                
+                // print_r($dataProductImageDetail);
+                // dd();
             }   
     
             //======== insert product tags *********
