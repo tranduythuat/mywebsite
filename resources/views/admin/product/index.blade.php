@@ -50,7 +50,7 @@
                   <td>{{ $product_item->name }}</td>
                   <td>{{ number_format($product_item->price) . ' VNĐ' }}</td>
                   <td>
-                    <img class="image_product" src="{{ $product_item->feature_image_path }}" alt="">
+                    <img class="image_product" src="{{ asset('storage/product/'). '/' . auth()->id() . '/' . $product_item->feature_image_name }}" alt="">
                   </td>
                   <td>{{ optional($product_item->category)->name }} </td>
                   <td>

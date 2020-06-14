@@ -40,6 +40,7 @@ class AdminProductController extends Controller
     public function index()
     {
         $products = $this->product->latest()->paginate(5);
+        // dd($products);
         return view('admin.product.index', compact('products'));
     }
 
@@ -58,9 +59,9 @@ class AdminProductController extends Controller
         return $htmlOption;
     }
 
-    public function store(ProductAddRequest $request)
+    public function store(Request $request)
     {
-        // dd($request->tags);  
+        // dd(url(public_path('product')));  
         try {
 
             DB::beginTransaction();
@@ -80,20 +81,23 @@ class AdminProductController extends Controller
                 $dataProductCreate['feature_image_name'] = $dataUploadFeatureImage['file_name'];
                 $dataProductCreate['feature_image_path'] = $dataUploadFeatureImage['file_path'];
             }
-    
+
+            // dd($dataProductCreate);
             $dataProduct = $this->product->create($dataProductCreate);
-            // dd($dataProduct);
+            
     
             //====== insert data to product_images ========
             if($request->hasFile('image_path')){
                 foreach($request->image_path as $fileItem){
-                    $dataProductImageDetail = $this->storageTraitUpLoadMutiple($fileItem, 'product');
+                    $dataProductImageDetail = $this->storageTraitUpLoadMutiple($fileItem, 'products');
                     // dd($dataProductImageDetail);
                     $dataProduct->images()->create([
                         'image_path' => $dataProductImageDetail['file_path'],
-                        'image_name' => $dataProductImageDetail['file_name']
+                        'image_name' => $dataProductImageDetail['file_name_hash'],
                     ]);
                 }
+
+                
             }   
     
             //======== insert product tags *********
