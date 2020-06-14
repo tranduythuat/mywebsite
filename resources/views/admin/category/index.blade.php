@@ -27,7 +27,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <a href="{{ route('categories.create') }}" class="btn btn-primary float-right m-2">Thêm mới</a>
+          <a href="{{ route('categories.create') }}" class="btn btn-primary float-right m-2"><i class='far fa-plus-square'></i> Thêm mới</a>
         </div>
         <div class="col-md-12">
           <table class="table" id="tbCategories">

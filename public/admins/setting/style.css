@@ -1,0 +1,8 @@
+.errors{
+    color: red;
+}
+.alert .alert-success {
+    color: #fff;
+    background: #a6d8aa;
+    border-color: #73d189;
+}

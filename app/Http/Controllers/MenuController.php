@@ -2,77 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Components\MenuRecusive;
 use App\Menu;
 use Illuminate\Http\Request;
-use App\Components\Recusive;
 use Illuminate\Support\Str;
 
 class MenuController extends Controller
 {
     private $menu;
-
-    public function __construct(Menu $menu)
+    private $menuRecusive;
+    public function __construct(Menu $menu, MenuRecusive $menuRecusive)
     {
         $this->menu = $menu;
+        $this->menuRecusive = $menuRecusive;
     }
 
     public function index()
     {
         $menus = $this->menu->latest()->paginate(5);
-        return view('menu.index', compact('menus'));
+        return view('admin.menu.index', compact('menus'));
     }
 
-    // public function create()
-    // {
-    //     $htmlOption = $this->getCategory(null);
-
-    //     return view('category.add', compact('htmlOption'));
-    // }
+    public function create()
+    {
+        $optionSelect = $this->menuRecusive->menuRecusiveAdd();
+        return view('admin.menu.add', compact('optionSelect'));
+    }
     
-    // public function store(Request $request)
-    // {
-    //     $this->category->create([
-    //         'name' => $request->name,
-    //         'parent_id' => $request->parent_id,
-    //         'slug' => Str::of($request->name)->slug('-')
-    //     ]);
+    public function store(Request $request)
+    {
+        $this->menu->create([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'slug' => Str::slug($request->name, '-')
+        ]);
 
-    //     return redirect()->route('categories.index')->with('success', 'Tạo mới danh mục thành công!');
-    // }
+        return redirect()->route('menus.index')->with('success', 'Tạo mới menu thành công!');
+    }
 
-    // public function getCategory($parentId)
-    // {
-    //     $data = $this->category->all();
-    //     $recusive = new Recusive($data);
-    //     $htmlOption = $recusive->categoryRecusive($parentId);
+    public function edit($id)
+    {
+        $menuById = $this->menu->find($id);
+        $optionSelect = $this->menuRecusive->menuRecusiveEdit($menuById->parent_id);
+        return view('admin.menu.edit', compact('optionSelect', 'menuById'));
+    }
 
-    //     return $htmlOption;
-    // }
+    public function update($id, Request $request) 
+    {
+        $this->menu->find($id)->update([
+            'name' => $request->name,
+            'parent_id' => $request->parent_id,
+            'slug' => Str::of($request->name)->slug('-')
+        ]);
 
-    // public function edit($id)
-    // {
-    //     $category = $this->category->find($id);
-    //     $htmlOption = $this->getCategory($category->parent_id);
-        
-    //     return view('category.edit', compact('category', 'htmlOption'));
-    // }
+        return redirect()->route('menus.index')->with('success', 'Sửa menu thành công!');
+    }
 
-    // public function update($id, Request $request)
-    // {
-    //     $this->category->find($id)->update([
-    //         'name' => $request->name,
-    //         'parent_id' => $request->parent_id,
-    //         'slug' => Str::of($request->name)->slug('-')
-    //     ]);
+    public function delete($id)
+    {
+        $this->menu->find($id)->delete();
 
-    //     return redirect()->route('categories.index')->with('success', 'Sửa danh mục thành công!');
-    // }
-
-    // public function delete($id)
-    // {
-    //     $this->category->find($id)->delete();
-
-    //     return redirect()->route('categories.index')->with('success', 'Xóa danh mục thành công!');
-    // }
+        return redirect()->route('menus.index')->with('success', 'Xóa menu thành công!');
+    }
 }
  
