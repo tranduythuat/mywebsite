@@ -93,7 +93,7 @@ class AdminProductController extends Controller
                     // dd($dataProductImageDetail);
                     $dataProduct->images()->create([
                         'image_path' => $dataProductImageDetail['file_path'],
-                        'image_name' => $dataProductImageDetail['file_name_hash'],
+                        'image_name' => $dataProductImageDetail['file_name'],
                     ]);
                 }
 
