@@ -49,7 +49,7 @@
                         <td scope="row">{{ $sliderItem->name }}</td>
                         <td scope="row">{{ $sliderItem->description }}</td>
                         <td scope="row">
-                            <img class="image-slider" src="{{ $sliderItem->image_path }}" alt="">
+                            <img class="image-slider" src="{{ URL::to('/') }}/storage/slider/{{ auth()->id() }}/{{ $sliderItem->image_path }}" alt="">
                         </td>
                         <td>
                             <a href="{{ route('sliders.edit', ['id' => $sliderItem->id]) }}" class="btn btn-default">Edit</a>
