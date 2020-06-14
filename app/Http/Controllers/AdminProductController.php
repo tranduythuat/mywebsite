@@ -160,7 +160,7 @@ class AdminProductController extends Controller
                 $this->productImage->where('product_id', $id)->delete();
 
                 foreach($request->image_path as $fileItem){
-                    $dataProductImageDetail = $this->storageTraitUpLoadMutiple($fileItem, 'product');
+                    $dataProductImageDetail = $this->storageTraitUpLoadMutiple($fileItem, 'products');
                     // dd($dataProductImageDetail);
                     $dataProduct->images()->create([
                         'image_path' => $dataProductImageDetail['file_path'],

@@ -46,7 +46,7 @@
                             >
                             <div class="col-md-12">
                                 <div class="row">
-                                    <img class="product_image_edit" src="{{ $product->feature_image_path }}" alt="">
+                                    <img class="product_image_edit" src="{{ URL::to('/') }}/storage/product/{{ auth()->id() }}/{{ $product->feature_image_path }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                 <div class="row">
                                     @foreach ($product->productImages as $productImageItem)
                                         <div class="col-md-4">
-                                            <img class="product_image_edit" src="{{ $productImageItem->image_path }}" alt="">
+                                            <img class="product_image_edit" src="{{ URL::to('/') }}/storage/products/{{ auth()->id() }}/{{ $productImageItem->image_path }}" alt="">
                                         </div> 
                                     @endforeach
                                 </div>
