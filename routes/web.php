@@ -78,7 +78,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::prefix('products')->group(function(){
         Route::get('/',[
             'as' => 'products.index',
-            'uses' => 'SliderAdminController@index'
+            'uses' => 'AdminProductController@index'
         ]);
         Route::get('/create',[
             'as' => 'products.create',
