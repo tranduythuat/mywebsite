@@ -49,7 +49,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('sliders.index') }}" class="nav-link">
-                        <i class="nav-icon fab fa-product-hunt"></i>
+                        <i class="nav-icon fas fa-cannabis"></i>
                         <p>
                         Slider 
                         </p>
@@ -57,12 +57,29 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('settings.index') }}" class="nav-link">
-                        <i class="nav-icon fab fa-product-hunt"></i>
+                        <i class="nav-icon fas fa-cogs"></i>
                         <p>
                         Setting 
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('users.index') }}" class="nav-link">
+                        <i class="nav-icon 	fas fa-user-friends"></i>
+                        <p>
+                        User 
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('roles.index') }}" class="nav-link">
+                        <i class="nav-icon fab fa-critical-role"></i>
+                        <p>
+                            Vai trò (Role)
+                        </p>
+                    </a>
+                </li>
+                
             </ul>
         </nav>
     <!-- /.sidebar-menu -->

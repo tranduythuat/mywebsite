@@ -13,11 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/admin', [
+    'as' => 'admin.login',
+    'uses' => 'AdminController@loginAdmin'
+]);
+Route::get('/logout', [
+    'as' => 'admin.logout',
+    'uses' => 'AdminController@logout'
+]);
+
+Route::post('/admin', [
+    'as' => 'admin.post.login',
+    'uses' => 'AdminController@postLoginAdmin'
+]);
+
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    return view('dashboard');
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -155,10 +166,59 @@ Route::group(['prefix' => 'admin'], function () {
             'uses' => 'SettingAdminController@delete'
         ]);
     });
+
+    Route::prefix('users')->group(function(){
+        Route::get('/',[
+            'as' => 'users.index',
+            'uses' => 'AdminUserController@index'
+        ]);
+        Route::get('/create',[
+            'as' => 'users.create',
+            'uses' => 'AdminUserController@create'
+        ]);
+        Route::post('/store',[
+            'as' => 'users.store',
+            'uses' => 'AdminUserController@store'
+        ]);
+        Route::get('/edit/{id}',[
+            'as' => 'users.edit',
+            'uses' => 'AdminUserController@edit'
+        ]);
+        Route::put('/update/{id}',[
+            'as' => 'users.update',
+            'uses' => 'AdminUserController@update'
+        ]);
+        Route::delete('/delete/{id}',[
+            'as' => 'users.delete',
+            'uses' => 'AdminUserController@delete'
+        ]);
+    });
+
+    Route::prefix('roles')->group(function(){
+        Route::get('/',[
+            'as' => 'roles.index',
+            'uses' => 'AdminRoleController@index'
+        ]);
+        Route::get('/create',[
+            'as' => 'roles.create',
+            'uses' => 'AdminRoleController@create'
+        ]);
+        // Route::post('/store',[
+        //     'as' => 'roles.store',
+        //     'uses' => 'AdminRoleController@store'
+        // ]);
+        // Route::get('/edit/{id}',[
+        //     'as' => 'roles.edit',
+        //     'uses' => 'AdminRoleController@edit'
+        // ]);
+        // Route::put('/update/{id}',[
+        //     'as' => 'roles.update',
+        //     'uses' => 'AdminRoleController@update'
+        // ]);
+        // Route::delete('/delete/{id}',[
+        //     'as' => 'roles.delete',
+        //     'uses' => 'AdminRoleController@delete'
+        // ]);
+    });
 });
 
-
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
